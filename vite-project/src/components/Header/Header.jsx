@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import {Container} from 'reactstrap'
 import {NavLink, Link} from 'react-router-dom'
 import '../../styles/header.css'
@@ -22,6 +23,9 @@ const nav_links =[
 ]
 
 const Header = () => {
+
+  const menuRef = useRef(null)
+  const toggleMenu = ()=> menuRef.current.classList.toggle('show__menu')
   return(
     <header className="header">
       <Container>
@@ -31,7 +35,7 @@ const Header = () => {
             <h5>Tasty Treat</h5>
           </div>
           {/* ====menu==== */}
-          <div className="navigation">
+          <div className="navigation" onClick={toggleMenu} ref={menuRef}>
             <div className="menu d-flex align-items-center gap-5">
 
               {
@@ -53,7 +57,7 @@ const Header = () => {
                 <i className="ri-user-line"></i>
               </Link>
             </span>
-            <span className="mobile__menu">
+            <span className="mobile__menu" onClick={toggleMenu}>
               <i className="ri-menu-line"></i>
             </span>
           </div>

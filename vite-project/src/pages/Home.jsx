@@ -1,3 +1,5 @@
+import Helmet from '../components/Helmet/Helmet'
+
 const Home = () => {
   return(
     <div>Home</div>

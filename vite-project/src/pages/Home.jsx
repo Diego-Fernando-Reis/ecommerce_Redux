@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Helmet from '../components/Helmet/Helmet'
-import {Container, Row, Col} from "reactstrap"
+import {Container, Row, Col, ListGroup, ListGroupItem} from "reactstrap"
 import '../styles/hero-section.css'
 import {Link} from 'react-router-dom'
 import Category from '../components/UI/category/Category'
@@ -33,6 +33,14 @@ const Home = () => {
 
   const [category, setCategory] = useState('ALL')
   const [allProducts, setAllProducts] = useState(products)
+
+  const [hotPizza, setHotPizza] = useState([])
+
+  useEffect(()=>{
+    const filteredPizza = products.filter(item => item.category === 'Pizza')
+    const slicePizza = filteredPizza.slice(0,4)
+    setHotPizza(slicePizza)
+  },[])
 
   useEffect(()=>{
 
@@ -137,13 +145,13 @@ const Home = () => {
 
             <Col lg='12'>
               <div className="food__category d-flex align-items-center justify-content-center gap-4">
-                <button className='all__btn foodBtnActive' onClick={()=>setCategory('ALL')}>All</button>
+                <button className={`all__btn ${category === 'ALL' ? 'foodBtnActive' : ''}`} onClick={()=>setCategory('ALL')}>All</button>
 
-                <button className='d-flex align-items-center gap-2' onClick={()=>setCategory('BURGER')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/hamburger.png" alt="" />Burger</button>
+                <button className={`d-flex align-items-center gap-2 ${category === 'BURGER' ? 'foodBtnActive' : ''}`} onClick={()=>setCategory('BURGER')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/hamburger.png" alt="" />Burger</button>
 
-                <button className='d-flex align-items-center gap-2' onClick={()=>setCategory('PIZZA')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/pizza.png" alt="" />Pizza</button>
+                <button className={`d-flex align-items-center gap-2 ${category === 'PIZZA' ? 'foodBtnActive' : ''}`} onClick={()=>setCategory('PIZZA')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/pizza.png" alt="" />Pizza</button>
 
-                <button className='d-flex align-items-center gap-2' onClick={()=>setCategory('BREAD')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/bread.png" alt="" />Bread</button>
+                <button className={`d-flex align-items-center gap-2 ${category === 'BREAD' ? 'foodBtnActive' : ''}`} onClick={()=>setCategory('BREAD')}><img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/bread.png" alt="" />Bread</button>
               </div>
             </Col>
 
@@ -155,6 +163,75 @@ const Home = () => {
               ))
             }
 
+          </Row>
+        </Container>
+      </section>
+
+      <section className='mb-5 pt-5 mt-0'>
+        <Container>
+          <Row>
+            <Col lg='6' md='6'>
+              <img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/location.png" alt="why-tasty-treat" className='w-100'/>
+            </Col>
+
+            <Col lg='6' md='6'>
+              <div className="why__tasty-treat">
+                <h2 className='tasty__treat-title mb-4'>Why <span>Tasty Treat?</span></h2>
+                <p className='tasty__treat-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi veritatis ea excepturi earum, tenetur aliquam temporibus sequi reprehenderit dolor voluptas et rem. Ea eveniet ipsum perferendis labore nostrum ratione quibusdam voluptates porro quaerat sapiente? Quo voluptatum quae optio! Ex, illo?</p>
+
+                <ListGroup className='mt-5'>
+                  <ListGroupItem className='border-0 ps-0'>
+                    <p className='choose__us-title d-flex align-items-center gap-2'><i class="ri-checkbox-circle-line"></i>Fresh and tasty foods</p>
+                    <p className='choose__us-desc'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, alias.</p>
+                  </ListGroupItem>
+
+                  <ListGroupItem className='border-0 ps-0'>
+                    <p className='choose__us-title d-flex align-items-center gap-2'><i class="ri-checkbox-circle-line"></i>Quality support</p>
+                    <p className='choose__us-desc'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, inventore.</p>
+                  </ListGroupItem>
+
+                  <ListGroupItem className='border-0 ps-0'>
+                    <p className='choose__us-title d-flex align-items-center gap-2'><i class="ri-checkbox-circle-line"></i>Order from any location</p>
+                    <p className='choose__us-desc'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, inventore.</p>
+                  </ListGroupItem>
+                </ListGroup>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className='my-5 pb-5'>
+        <Container>
+          <Row>
+            <Col lg="12" className='text-center my-5'>
+              <h2>Hot Pizza</h2>
+            </Col>
+
+            {
+              hotPizza.map(item=>(
+                <Col lg='3' md='4' key={item.id}>
+                  <ProductCard item={item} />
+                </Col>
+              ))
+            }
+          </Row>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <Row>
+            <Col lg='6' md='6'>
+              <div className='testimonial mb-5'>
+                <h5 className='testimonial__subtitle'>Testimonial</h5>
+                <h2 className='testimonial__title'>What our <span>customers</span> are saying.</h2>
+              </div>
+            </Col>
+
+            <Col lg='6' md='6'>
+              <img src="https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/network.png" alt="testimonial-img" className='w-100'/>
+            </Col>
           </Row>
         </Container>
       </section>

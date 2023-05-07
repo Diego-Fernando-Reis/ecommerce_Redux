@@ -1,15 +1,15 @@
 const products = [
-  // {
-  //   id: "01",
-  //   title: "Chicken Burger",
-  //   price: 24.0,
-  //   image01: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.jpg',
-  //   image02: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.1.jpg',
-  //   image03: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.3.jpg',
-  //   category: "Burger",
+  {
+    id: "01",
+    title: "Chicken Burger",
+    price: 24.0,
+    image01: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.jpg',
+    image02: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.1.jpg',
+    image03: 'https://raw.githubusercontent.com/codingwithmuhib/React-food-delivery-app/startup/src/assets/images/product_01.3.jpg',
+    category: "Burger",
 
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque. ",
-  // },
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque. ",
+  },
 
   {
     id: "02",
